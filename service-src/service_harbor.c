@@ -439,6 +439,7 @@ _remote_send_name(struct harbor *h, uint32_t source, const char name[GLOBALNAME_
 		header.session = (uint32_t)session;
 		_push_queue(node->queue, msg, sz, &header);
 		// 0 for request
+		skynet_error(h->ctx, "global service [%s] missing,msg from :%x\n", name, source);
 		_remote_register_name(h, name, 0);
 		return 1;
 	} else {
